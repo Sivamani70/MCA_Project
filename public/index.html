@@ -12,7 +12,7 @@
     body {
       margin: 0;
       padding: 0;
-      width: 100vw;
+      /* width: 100%; */
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -26,7 +26,14 @@
 </head>
 
 <body>
-  <video id="video" width="720" height="560" autoplay muted></video>
+  <video id="video" width="1080" height="720" autoplay muted></video>
+
+  <!-- <script>
+    const _width = window.screen.width
+    const _height = window.screen.height
+    document.getElementById('video').setAttribute('style', 'width:1080')
+    document.getElementById('video').setAttribute('style', `height:${_height}`)
+  </script> -->
 </body>
 
 </html>
