@@ -16,9 +16,19 @@ function startVideo() {
 }
 
 video.addEventListener('play', () => {
+  let width, height
+  if (window.screen.width < 736) {
+    width = window.screen.width
+    height = window.screen.height * 0.8
+  } else {
+    width = video.width
+    height = video.height
+  }
+  console.log(`width : ${width} , height: ${height}`);
+
   const canvas = faceapi.createCanvasFromMedia(video)
   document.body.append(canvas)
-  const displaySize = { width: video.width, height: video.height }
+  const displaySize = { width: width, height: height }
   faceapi.matchDimensions(canvas, displaySize)
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
