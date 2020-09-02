@@ -1,11 +1,11 @@
 const path = require('path')
 const express = require('express')
 
-const pathProvider = path.join(__dirname + '/');
+const pathProvider = path.join(__dirname + '/')
 // console.log(pathProvider);
 
 
-const port = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 const app = express()
 
@@ -15,8 +15,8 @@ app.get('/', (req, res) => {
     res.sendFile('index.html')
 })
 
-app.listen(port, () => {
-    console.log(`server is up listenig ${port}`);
-    console.log(`localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`server is up listenig ${PORT}`)
+    console.log(`http://localhost:${PORT}`)
 
 })

@@ -26,16 +26,16 @@ video.addEventListener('play', () => {
   }
   console.log(`width : ${width} , height: ${height}`);
 
-  const canvas = faceapi.createCanvasFromMedia(video)
-  document.body.append(canvas)
+  const frame = faceapi.createCanvasFromMedia(video)
+  document.body.append(frame)
   const displaySize = { width: width, height: height }
-  faceapi.matchDimensions(canvas, displaySize)
+  faceapi.matchDimensions(frame, displaySize)
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
-    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-    faceapi.draw.drawDetections(canvas, resizedDetections)
-    faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
-    faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
+    frame.getContext('2d').clearRect(0, 0, frame.width, frame.height)
+    faceapi.draw.drawDetections(frame, resizedDetections)
+    faceapi.draw.drawFaceLandmarks(frame, resizedDetections)
+    faceapi.draw.drawFaceExpressions(frame, resizedDetections)
   }, 100)
 })
