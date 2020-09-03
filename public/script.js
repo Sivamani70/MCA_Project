@@ -48,7 +48,6 @@ video.addEventListener('play', () => {
     faceapi.draw.drawDetections(canvas, resizedDetections)
     faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-
     const age = resizedDetections[0].age;
     const interpolatedAge = await interpolateAgePredictions(age);
     const bottomRight = {
@@ -58,7 +57,7 @@ video.addEventListener('play', () => {
 
     // ${faceapi.Gender.MALE}
     new faceapi.draw.DrawTextField(
-      [`${faceapi.round(interpolatedAge, 0)} years`],
+      [`${faceapi.round(interpolatedAge, 0)} years ${resizedDetections[0].gender}`],
       bottomRight
     ).draw(canvas);
 
